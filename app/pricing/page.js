@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const page = () => {
   return (
-    <main className="min-h-screen bg-white text-gray-900 flex flex-col items-center px-4 py-10">
+    <main className="pt-40 min-h-screen bg-white text-gray-900 flex flex-col items-center px-4 py-10">
       <h1 className="text-4xl font-bold text-center mb-6">Simple & Transparent Pricing</h1>
       <p className="text-lg text-center text-gray-600 max-w-xl mb-10">
         Bittree is completely free to use — no registration required. Just create your profile and start sharing your links instantly.

@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import Skeleton from "@/component/Skeleton";
+import { toast, Bounce } from "react-toastify";
 
 const Page = () => {
   const { handle } = useParams();
@@ -14,17 +16,34 @@ const Page = () => {
     const getTree = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/${handle}`);
       const data = await res.json();
-      setTree(data.tree);
-      console.log(data.tree);
+      if (res.ok) {
+        setTree(data.tree);
+        // console.log(data.tree);
+      } else {
+        // console.log(data);
+        toast.error(data.message || "Internal server error", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        // notFound();
+      }
     };
     getTree();
   }, []);
 
-  if (!tree) return <div>Loading....</div>;
+  if (!tree) return <Skeleton />;
 
   return (
     <div className="bg-[#cdd1d6] min-h-screen p-8">
-      <div className="w-[30vw] mt-30 bg-white min-h-[80vh] flex flex-col pt-20 rounded-2xl shadow-gray-100 items-center mx-auto">
+      <div className="relative lg:w-[25vw] mt-10 lg:mt-30 bg-white min-h-[80vh] flex flex-col pt-20 rounded-2xl shadow-gray-100 items-center mx-auto">
+        <h1 className="absolute text-lg  left-2 top-2  p-3">@{handle}</h1>
         <div className="flex flex-col items-center gap-4">
           <img
             className="w-25 h-25 rounded-full"
@@ -63,7 +82,7 @@ const Page = () => {
                     <Link
                       href={e.url}
                       target="_blank"
-                      className="capitalize cursor-pointer w-60 text-center bg-gray-200 px-10 rounded-2xl hover:font-bold py-3 block"
+                      className="capitalize cursor-pointer w-60 lg:w-80 text-center bg-gray-200 px-10 rounded-2xl hover:font-bold py-3 block"
                     >
                       {e?.label}
                     </Link>
