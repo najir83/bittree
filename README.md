@@ -8,13 +8,24 @@
 
 ## 🔗 Live Demo
 
-👉 [bittreetr.vercel.app](https://bittreetr.vercel.app)
+> 👉[bittreetr.vercel.app](https://bittreetr.vercel.app)
 
-Create your own page like this:  
+### Create your own page like this:  
 
-> https://bittree.vercel.app/?handle=yourname
+> #### https://bittreetr.vercel.app/najir
+![BitTree UI Screenshot](Tree.png) 
 
----
+---                                                 
+
+
+## 📸 Screenshot
+
+- Home Page
+![BitTree UI Screenshot](Home.png) 
+- Generate Page
+![BitTree UI Screenshot](Generate.png) 
+
+                                       
 
 ## 🚀 Features
 
@@ -37,8 +48,8 @@ Create your own page like this:
 
 ## 🧑‍💻 How It Works
 
-1. Add your links and username to the URL like:
-> https://bittree.vercel.app/?handle=myname
+1. Add your links and handle to the URL like:
+> https://bittreetr.vercel.app/generate
 
 2. Your unique link page is automatically rendered.
 3. Share that link anywhere!
@@ -47,14 +58,12 @@ Create your own page like this:
 
 ## 📂 Project Structure
 
-<b >bittree/</b>
-<br/>
-
-├── app/ # Next.js app directory <br/>
-├── components/ # Reusable UI components<br/>
-├── styles/ # Global styles<br/>
-├── public/ # Static files<br/>
-└── utils/ # Utility functions (if any)<br/>
+### bittree/
+- #### ├── app/ # Next.js app directory 
+- #### ├── components/ # Reusable UI components
+- #### ├── public/ # Static files
+- #### ├── models/ # Mongoose Model
+- #### ├──  lib/ # Utility functions (if any)
 
 
 ---
