@@ -3,7 +3,8 @@ import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Typed from "typed.js";
+import TypingComponent from "@/component/typed";
 export default function Home() {
   const Start = process.env.NEXT_PUBLIC_URL_STARTS;
   const [linktree, setLinktree] = useState(Start);
@@ -16,12 +17,13 @@ export default function Home() {
             <h1 className="text-3xl lg:text-8xl py-4 font-black text-yellow-400">
               Everything you are. In one, simple link in bio.
             </h1>
-            <h3 className="text-sm lg:text-2xl font-semibold text-white">
+            {/* <h3 className="text-sm lg:text-2xl font-semibold text-white">
               Join 70M+ people using Bittree for their link in bio. One link to
               help you share everything you create, curate and sell from your
               Instagram, TikTok, Twitter, YouTube and other social media
               profiles.
-            </h3>
+            </h3> */}
+            <TypingComponent />  
             <div className=" m-5 ml-0 mt-10">
               <input
                 onChange={(e) => {

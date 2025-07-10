@@ -47,7 +47,7 @@ const Page = () => {
         <div className="flex flex-col items-center gap-4">
           <img
             className="w-25 h-25 rounded-full"
-            src={tree.ProfilePicture}
+            src={tree.ProfilePicture || "/defaultPic.jpg"}
             alt="profile picture"
           />
           <h1 className="capitalize font-bold text-xl">

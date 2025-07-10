@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { toast, Bounce } from "react-toastify";
 import { useSearchParams } from "next/navigation";
 import { Camera, Mail, User } from "lucide-react";
+import Link from "next/link";
 
 const GenerateClient = () => {
   const searchParams = useSearchParams();
-
+  const [authrizedHandle, setAuthorizedHandle] = useState("");
   const [handle, setHandle] = useState(searchParams.get("handle") || "");
   const [linkTree, setLinkTree] = useState([{ label: "", url: "" }]);
   const [name, setName] = useState("");
@@ -61,6 +62,7 @@ const GenerateClient = () => {
     setLinkTree(updated);
   };
   const handleSubmit = async () => {
+    setAuthorizedHandle("");
     if (!handle) {
       toast.warn("handle is required..", {
         position: "top-right",
@@ -100,9 +102,11 @@ const GenerateClient = () => {
         theme: "light",
         transition: Bounce,
       });
+      setAuthorizedHandle(handle);
       setHandle("");
       setLinkTree([{ label: "", url: "" }]);
       setPicture("");
+      setName("");
 
       setisSubmitting(0);
     } else {
@@ -127,11 +131,14 @@ const GenerateClient = () => {
       setHandle("");
       setLinkTree([{ label: "", url: "" }]);
       setPicture("");
+      setName("");
+
       setisSubmitting(0);
 
       // console.log(res);
     }
   };
+  // console.log(process.env.NEXT_PUBLIC_URL_STARTS)
   return (
     <div className="bg-[#cdd1d6] min-h-screen p-3 lg:p-8">
       <div className="lg:max-w-7xl pt-50 mx-auto grid md:grid-cols-2 gap-10 lg:items-start">
@@ -260,6 +267,19 @@ const GenerateClient = () => {
               {isSubmitting ? "Creating BitLink" : "🚀 Create Your BitLink"}
             </button>
           </div>
+          {authrizedHandle && (
+            <div className="text-lg italic">
+              Your BitTree URL :{" "}
+              <Link
+                className="bold p-2 pl-4 font-bold hover:bg-gray-300 "
+                target="_blank"
+                href={`http://${process.env.NEXT_PUBLIC_URL_STARTS}${authrizedHandle}`}
+              >
+                {process.env.NEXT_PUBLIC_URL_STARTS}
+                {authrizedHandle}
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Right: Preview / Image */}

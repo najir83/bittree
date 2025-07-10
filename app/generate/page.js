@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import GenerateClient from "./GenerateClientj";
+import GenerateClient from "./GenerateClient";
 
 export default function GeneratePage() {
   return (
